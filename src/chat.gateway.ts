@@ -4,9 +4,9 @@ import {
   WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
-import { Server } from 'http';
+import { Server } from 'https';
 
-@WebSocketGateway()
+@WebSocketGateway({ cors: true })
 export class ChatGateWay {
   @WebSocketServer() server: Server;
   @SubscribeMessage('message')

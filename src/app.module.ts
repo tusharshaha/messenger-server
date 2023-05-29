@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ChatGateWay } from './chat.gateway';
 
 @Module({
   imports: [
@@ -8,5 +9,6 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
   ],
+  providers: [ChatGateWay],
 })
 export class AppModule {}
