@@ -1,3 +1,4 @@
+import { OnModuleInit } from '@nestjs/common';
 import {
   MessageBody,
   SubscribeMessage,
@@ -6,9 +7,20 @@ import {
 } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 
-@WebSocketGateway({ cors: true })
-export class ChatGateWay {
+@WebSocketGateway({
+  cors: {
+    origin: ['http://localhost:3000'],
+  },
+})
+export class ChatGateWay implements OnModuleInit {
   @WebSocketServer() server: Server;
+
+  onModuleInit() {
+    this.server.on('connection', (socket) => {
+      console.log(socket.id);
+      console.log('Connected');
+    });
+  }
 
   @SubscribeMessage('message')
   handleEvent(@MessageBody() message: string): void {
