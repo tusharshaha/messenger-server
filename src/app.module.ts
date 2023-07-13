@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ChatGateWay } from './chat.gateway';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -8,6 +9,7 @@ import { ChatGateWay } from './chat.gateway';
       envFilePath: '.env',
       isGlobal: true,
     }),
+    UserModule,
   ],
   providers: [ChatGateWay],
 })
