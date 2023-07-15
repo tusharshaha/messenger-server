@@ -19,7 +19,6 @@ export class AuthService {
     date.setDate(date.getDate() + 30);
     user.userExpires = date;
     await user.save({ validateBeforeSave: true });
-
     return name;
   }
 }
