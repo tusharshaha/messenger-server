@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './schema/user.schema';
 import { Model } from 'mongoose';
-import { signupDto } from './dto/signup.dto';
+import { SignupDto } from './dto/signup.dto';
 
 @Injectable()
 export class AuthService {
@@ -10,7 +10,7 @@ export class AuthService {
     @InjectModel(User.name) private readonly userModel: Model<User>,
   ) {}
 
-  async signup(signupDto: signupDto) {
+  async signup(signupDto: SignupDto) {
     const { name, email, password } = signupDto;
     const userBody = { name, email, password };
     const user = new this.userModel(userBody);

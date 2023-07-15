@@ -1,7 +1,7 @@
 import { Exclude } from 'class-transformer';
 import { IsString, IsNotEmpty, Matches, IsEmail } from 'class-validator';
 
-export class signupDto {
+export class SignupDto {
   @IsNotEmpty()
   @IsString()
   @Matches(/^[A-Za-z ]+$/, { message: 'Your name is not valid' })
