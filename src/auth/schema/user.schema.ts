@@ -44,5 +44,5 @@ export class User extends Document {
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
-// create TTL index for invalid user
+// create TTL index for user
 UserSchema.index({ userExpires: 1 }, { expireAfterSeconds: 0 });
